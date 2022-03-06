@@ -101,17 +101,30 @@
 </head>
 <body>
     <div class="form">
-        <form action="">
+        <form action="signup.script.php" method="POST">
             <center>
                 <img src="img/stock-exchange-app.png" alt=""><br><br>
                 <h3>Stock<span class="watch">Watch</span><span class="seperator"> | </span>Sign Up</h3><br><br>
-                <input type="text" class="username" placeholder="Username"><br><br>
+                <input type="text" class="username" name="username" placeholder="Username"><br><br>
                 <div class="passworddiv">
-                    <input type="password" class="password" id="inputs" placeholder="Password">
+                    <input type="password" class="password" id="inputs" name="password" placeholder="Password">
                     <div class="eye" alt=""></div>
                 </div><br><br>
-                <input type="submit" class="btn"><br><br>
+                <input type="submit" name="submit" class="btn"><br><br>
                 <a href="login.php" class="login">Already have an account <span>LogIn</span></a>
+                <br><br>
+                <?php
+                  $url = $_SERVER['REQUEST_URI'];
+                  if (preg_match("/userexists/", $url)) {
+                    echo '<p style="color: red; font-family: sans-serif; font-size: 14px;">Username is taken</p>';
+                  }
+                  if (preg_match("/firstsignup/", $url)) {
+                    echo '<p style="color: red; font-family: sans-serif; font-size: 14px;">First signup</p>';
+                  }
+                  if (preg_match("/emptyformfilds/", $url)) {
+                    echo '<p style="color: red; font-family: sans-serif; font-size: 14px;">Empty Form Fields</p>';
+                  }
+                  ?>
             </center>
         </form>
     </div>
