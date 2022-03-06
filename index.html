@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stonks</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            background-color: none;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            width: 80%;
+            height: 620px;
+            margin-left: 10%;
+            margin-top: 30px;
+            border-radius:30px 30px 0px 30px;
+        }
+        .navbar{
+            background-color: none;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            padding-left: 20px;
+            padding-right: 5px;
+
+        }
+        .navbarleft{
+            background-color: none;
+            padding-top: 5px;
+            display: flex;
+            width: 160px;
+        }
+        .add{
+            background-image: url(img/plus.png);
+            width: 24px;
+            height: 24px;
+            background-color: none;
+            margin-right: 20px;
+            float: right;
+        }
+        .add:hover{
+            cursor: pointer;
+        }
+        .cancel{
+            background-image: url(img/cancel.png);
+            width: 24px;
+            height: 24px;
+            background-color: none;
+            margin-right: 20px;
+            float: right;
+        }
+        .cancel:hover{
+            cursor: pointer;
+        }
+        .watchlist{
+            background-color: none;
+            height: 600px;
+            display: flex;
+        }
+        .watchlisthidden{
+            display: none;
+        }
+        .watchlistactive{
+            font-family: sans-serif;
+            color: black;
+            padding-right: 40px;
+        }
+        .watchlistinactive{
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.349);
+            padding-right: 40px;
+        }
+        .watchlistinactive:hover{
+            cursor: pointer;
+            color: black;
+        }
+        .watchlistbar{
+            background-color: none;
+            overflow-y: scroll;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            border-bottom-left-radius: 20px;
+            margin-top: 26px;
+            margin-left: 20px;
+            margin-right: 10px;
+            height: 510px;
+            width: 50%;
+        }
+        .watchlistcontent{
+            background: none;
+            overflow-y: scroll;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            margin-top: 26px;
+            margin-left: 10px;
+            margin-right: 20px;
+            float: right;
+            width: 50%;
+            height: 510px;
+        }
+        .notes{
+            display: none;
+        }
+        .notesvisible{
+            background-color: none;
+            height: 600px;
+            display: flex;
+        }
+        .notesactive{
+            font-family: sans-serif;
+            color: black;
+        }
+        .notesinactive{
+            font-family: sans-serif;
+            color: rgba(0, 0, 0, 0.349);
+        }
+        .notesinactive:hover{
+            color: black;
+            cursor: pointer;
+        }
+        .notesbar{
+            background-color: none;
+            overflow-y: scroll;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            border-bottom-left-radius: 20px;
+            margin-top: 26px;
+            margin-left: 20px;
+            margin-right: 10px;
+            height: 510px;
+            width: 50%;
+        }
+        .notescontent{
+            background: none;
+            overflow-y: scroll;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            margin-top: 26px;
+            margin-left: 10px;
+            margin-right: 20px;
+            float: right;
+            width: 50%;
+            height: 510px;
+        }
+        .addnote{
+            display: block;
+            background-color: none;
+            border: 1px solid rgba(0, 0, 0, 0.281);
+            position: relative;
+            border-bottom-left-radius: 20px;
+            margin-top: 26px;
+            margin-left: 20px;
+            margin-right: 10px;
+            height: 510px;
+            width: 95.5%;
+        }
+        .addnotehidden{
+            display: none;
+        }
+        .addnotebtn{
+            border: none;
+            color: white;
+            position: absolute;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            bottom: 0;
+            right: 0;
+            border-radius: 10px;
+            padding: 12px 30px 12px 30px;
+            background-color: black;
+        }
+        .notetitle{
+            border: none;
+            border-bottom: 2px solid black;
+            padding-top: 0px;
+            margin-left: 30px;
+            margin-top: 30px;
+            background-color: none;
+            outline: none;
+            width: 20%;
+            height: 30px;
+        }
+        ::placeholder{
+            font-family: sans-serif;
+            font-size: 18px;
+        }
+        textarea{
+            border: 2px solid black;
+            margin-left: 30px;
+            margin-top: 30px;
+            width: 980px;
+            height: 330px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!--Navbar-->
+        <div class="navbar">
+            <div class="navbarleft">
+                <p class="watchlistactive">Watch List</p>
+                <p class="notesinactive">Notes</p>
+            </div>
+            <div class="add" title="Add stock"></div>
+        </div><br>
+        <hr style="width: 100%;">
+
+        <!--Watchlist starts here-->
+        <div class="watchlist">
+            <div class="watchlistbar">
+                <h1>stocks</h1>
+            </div>
+            <div class="watchlistcontent">
+                <h1>No stock selected</h1>
+            </div>
+        </div>
+
+        <!--Notes start here-->
+        <div class="notes">
+            <div class="notesbar">
+                <h1>Notes</h1>
+            </div>
+            <div class="notescontent">
+                <h1>No notes selected</h1>
+            </div>
+        </div>
+
+        <!--Add Stock-->
+        <div class="addstock">
+            
+        </div>
+
+        <!--Add Note-->
+        <div class="addnotehidden">
+            <div class="notebuttons">
+                <form action="">
+                    <input type="text" placeholder="Add your note title" class="notetitle"><br>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </form>
+                <button class="addnotebtn">Add Note</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        //const = document.querySelector(".");
+        //const = document.querySelector(".");
+        const watchlisttxt = document.querySelector(".watchlistactive");
+        const watchlist = document.querySelector(".watchlist");
+        const notes =  document.querySelector(".notes");
+        const notestxt = document.querySelector(".notesinactive");
+        const add = document.querySelector(".add");
+        const addnote = document.querySelector(".addnotehidden");
+
+        function notestxtclicked(){
+            notestxt.className = "notesactive";
+            notes.className = "notesvisible";
+            watchlisttxt.className = "watchlistinactive";
+            watchlist.className = "watchlisthidden";
+            add.className = "add";
+        }
+        function watchlistxtclicked(){
+            watchlisttxt.className = "watchlistactive";
+            watchlist.className = "watchlist";
+            notestxt.className = "notesinactive";
+            notes.className = "notes";
+            add.className = "add";
+        }
+        function addtitle(){
+            if (watchlisttxt.className == "watchlistactive" && watchlist.className == "watchlist") {
+                add.title = "Add Stock";
+            } else if(notestxt.className == "notesactive" && notes.className == "notesvisible"){
+                add.title = "Add Note";
+            } else{
+                add.title = "cancel";
+            }
+        }
+        function addbuttonclick(){
+            if (watchlisttxt.className == "watchlistactive" && watchlist.className == "watchlist") {
+                watchlist.className = "watchlisthidden";
+            } else if(watchlisttxt.className == "watchlistactive" && watchlist.className == "watchlisthidden"){
+                watchlist.className = "watchlist";
+            } else if (notestxt.className == "notesactive" && notes.className == "notesvisible") {
+                notes.className = "notes";
+                addnote.className = "addnote";
+            } else if(notestxt.className == "notesactive" && notes.className == "notes"){
+                notes.className = "notesvisible";
+                addnote.className = "addnotehidden"
+            }
+
+            if (add.className == "add") {
+                add.className = "cancel";
+            } else {
+                add.className = "add";
+            }
+        }
+        notestxt.addEventListener("click", notestxtclicked);
+        watchlisttxt.addEventListener("click", watchlistxtclicked);
+        add.addEventListener("mouseover", addtitle);
+        add.addEventListener("click", addbuttonclick);
+    </script>
+</body>
+</html>
