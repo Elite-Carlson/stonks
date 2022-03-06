@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stonks | Signup</title>
+    <link rel="shortcut icon" href="img/stock-exchange-app.png" type="image/x-icon">
+    <title>StockWatch | Signup</title>
     <style>
         *{
             padding: 0;
@@ -68,7 +69,7 @@
             background-color: black;
             color: white;
             width: 286px;
-            border-radius: 4px;
+            border-radius: 20px;
             height: 40px;
             border: none;
             transition: border-radius 3s;
@@ -99,10 +100,10 @@
     </style>
 </head>
 <body>
-    <div class="content">
     <div class="form">
-        <form action="index.html">
+        <form action="">
             <center>
+                <img src="img/stock-exchange-app.png" alt=""><br><br>
                 <h3>Stock<span class="watch">Watch</span><span class="seperator"> | </span>Sign Up</h3><br><br>
                 <input type="text" class="username" placeholder="Username"><br><br>
                 <div class="passworddiv">
@@ -110,11 +111,9 @@
                     <div class="eye" alt=""></div>
                 </div><br><br>
                 <input type="submit" class="btn"><br><br>
-                <a href="login.html" class="login">Already have an account <span>LogIn</span></a>
+                <a href="login.php" class="login">Already have an account <span>LogIn</span></a>
             </center>
         </form>
-    </div>
-    <!--<video src="img/pexels-rostislav-uzunov-9629254.mp4" autoplay loop muted></video>-->
     </div>
     <script>
         const eye = document.querySelector(".eye");
