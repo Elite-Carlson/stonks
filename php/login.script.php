@@ -27,7 +27,7 @@ if ($data=="") {
 our records, we are retrieving it as an arrays as that is the method in witch
 SQL returns the information to us and the password has the index of 1*/
       $id = $data['0'];
-      $hashedpass = $data['1'];
+      $hashedpass = $data['2'];
 
 /*turning the retrieved hashed password to a string*/
       $tostring = strval($hashedpass);
