@@ -37,6 +37,9 @@
                 if (preg_match("/usernotfound/", $url)) {
                   echo '<p style="color: red; font-family: sans-serif; font-size: 14px;">No such user Exists</p>';
                 }
+                if (preg_match("/firstlogin/", $url)) {
+                  echo '<p style="color: red; font-family: sans-serif; font-size: 14px;">LogIn to continue</p>';
+                }
                 ?>
             </center>
         </form>

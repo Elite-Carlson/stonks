@@ -7,17 +7,17 @@ if (isset($_POST['submit'])) {
 
   /*Retriving the inputed data from the form and turning it into a string
   to avoid SQL injections and storing it into a variable*/
-  $username = mysqli_real_escape_string($connect, $_POST['username']);;
-  $password = mysqli_real_escape_string($connect, $_POST['password']);;
+  $uid = mysqli_real_escape_string($connect, $_POST['username']);;
+  $pass = mysqli_real_escape_string($connect, $_POST['password']);;
 
 /*Checking if none of the forms are empty*/
-if (!empty($username) && !empty($password)) {
+if (!empty($uid) && !empty($pass)) {
     /*Hashing and salting the password */
-    $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
+    $hashedpassword = password_hash($pass, PASSWORD_DEFAULT);
 
 
 /*getting row with the user information of user inputed*/
-        $getuserdata = "SELECT * FROM users WHERE username = '".$username."';";
+        $getuserdata = "SELECT * FROM users WHERE username = '".$uid."';";
         $run = mysqli_query($connect,$getuserdata);
 
 /*recovering the data retrieved from the sql above*/
@@ -28,14 +28,14 @@ if (!empty($username) && !empty($password)) {
 /*if a user id was recovered then that means that the username is taken so inform
 user thats username is taken else input the new user into the database*/
           if ($idtoint > 0) {
-            header("Location:signup.php?error=userexists");
+            header("Location:../signup.php?error=userexists");
           }
 
           else{
     /*Writing the SQL codes for inputing the information into the table users and storing it into a variable
     then connecting to the database and querying the information into the database*/
     $query = "INSERT INTO users(username,passphrase)
-    VALUES('$username' , '$hashedpassword');";
+    VALUES('$uid' , '$hashedpassword');";
     $run = mysqli_query($connect,$query);
     $true = True; /*Setting a variable with the vlaue true*/
 
@@ -56,17 +56,17 @@ user thats username is taken else input the new user into the database*/
     $query = mysqli_query($connect,$insert);
     /*setting a cookie with the name UID and values of $token*/
     setcookie("UID", $token, time() + 60 * 60 * 24 * 365);
-    /*rideracting to signup.php*/
-    header("Location:index.php");
+    /*rideracting to index.php*/
+    header("Location:../index.php");
   }
-  /*Redirecting to signup with the error message that some form fields are empty*/
+  /*Redirecting to index with the error message that some form fields are empty*/
    }else {
-    header("Location:signup.php?error=emptyformfilds");
+    header("Location:../signup.php?error=emptyformfilds");
   }
 }
-  /*Redirecting to signup with the error message that the person didnt signup*/
+  /*Redirecting to index with the error message that the person didnt signup*/
     else {
-    header("Location:signup.php?error=firstsignup");
+    header("Location:../signup.php?error=firstsignup");
 }
  /*End of php*/
  ?>

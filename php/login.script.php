@@ -21,7 +21,7 @@ if (!empty($username) && !empty($pass)) {
       $data = mysqli_fetch_array($run);
 
 if ($data=="") {
-  header("Location:login.php?error=usernotfound");
+  header("Location:../login.php?error=usernotfound");
 }else {
 /*getting the password from the database where the data matches with
 our records, we are retrieving it as an arrays as that is the method in witch
@@ -44,25 +44,25 @@ if not it is equal to 0*/
         $hashedtoken = sha1($token);
 
         /*storing SQL code into a string for it to be later used in a query*/
-        $insert = "INSERT INTO tokens(uid,token) VALUES('$data[0]','$hashedtoken');";
+        $insert = "INSERT INTO tokens(userid,token) VALUES('$data[0]','$hashedtoken');";
         /*querying the info stored in variable insert into the database*/
         $query = mysqli_query($connect,$insert);
         /*setting a cookie with the name UID and values of $token*/
         setcookie("UID", $token, time() + 60 * 60 * 24 * 7);
         /*rideracting to index.php*/
-        header("Location:index.php");
+        header("Location:../index.php");
       }else {
-      header("Location:login.php?error=wrongcredentials");
+      header("Location:../login.php?error=wrongcredentials");
     }
   }
   }
   /*This will run if one or more of the fields is empty*/
   else {
-    header("Location:login.php?error=emptyfield");
+    header("Location:../login.php?error=emptyfield");
   }
   }
   /*This will run if someone tries to access this page through the URL*/
   else {
-    header("Location:login.php?error=didntinputinfo");
+    header("Location:../login.php?error=didntinputinfo");
   }
 ?>
