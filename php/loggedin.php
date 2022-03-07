@@ -1,7 +1,7 @@
 <?php
-if (isset($_COOKIE['UID'])) {
-$hashedcookie = sha1($_COOKIE['UID']);
-$select = "SELECT * FROM tokens WHERE token = '".$hashedcookie."';";
+if (isset($_COOKIE['zhenya'])) {
+$cookie = $_COOKIE['zhenya'];
+$select = "SELECT * FROM tokens WHERE token = '".$cookie."';";
 $query = mysqli_query($connect,$select);
 $getuid = mysqli_fetch_array($query);
 $selecttwo = "SELECT * FROM users WHERE id = '".$getuid[1]."';";

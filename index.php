@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<?php
+<!--<?php
 include 'php/dbconn.php';
 include 'php/loggedin.php';
-?>
+?>-->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -58,12 +58,12 @@ include 'php/loggedin.php';
                     <textarea name="notes" id="" cols="30" rows="10"></textarea>
                     <button name="submit" class="addnotebtn">Add Note</button>
                 </form>
-                <?php
+                <!--<?php
                 $select = "SELECT * FROM notes WHERE uid = '".$uid."';";
                 $query = mysqli_query($connect,$select);
                 $getuserinfo = mysqli_fetch_array($query);
                 echo "$uid";
-                ?>
+                ?>-->
             </div>
         </div>
     </div>

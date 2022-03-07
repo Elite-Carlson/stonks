@@ -28,12 +28,12 @@ if (!empty($uid) && !empty($pass)) {
     $runtwo = mysqli_query($connect,$selecttwo);
     $getuserinfo = mysqli_fetch_array($runtwo);
 
-    $token = bin2hex(openssl_random_pseudo_bytes(64, $true));
+    $token = 69/*bin2hex(openssl_random_pseudo_bytes(64, $true));*/;
     $hashedtoken = sha1($token);
 
-    $insert = "INSERT INTO tokens(uid,token) VALUES('$getuserinfo[0]','$hashedtoken');";
+    $insert = "INSERT INTO tokens(uid,token) VALUES('$getuserinfo[0]','$token');";
     $query = mysqli_query($connect,$insert);
-    setcookie("UID", $token, time() + 60 * 60 * 24 * 365);
+    setcookie("zhenya", $token, time() + 60 * 60 * 24 * 365);
     header("Location:../index.php");
   }
    }else {
