@@ -26,7 +26,7 @@ include 'php/loggedin.php';
         <hr style="width: 100%;">
 
         <!--Watchlist starts here-->
-        <div class="watchlisthidden">
+        <div class="watchlist">
             <div class="watchlistbar">
                 <h1>stocks</h1>
             </div>
